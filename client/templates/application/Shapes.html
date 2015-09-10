@@ -1,0 +1,24 @@
+<template name="shapes">
+<br>
+<h2 class="qTitle"><u>Area</u></h2>
+<h2 class="counter">{{result}}</h2>
+
+<div class='question'>
+<p>Calculate the area of a {{shape}}.</p>
+
+{{#if check}}
+<h1>{{correct}}</h1>
+<button id = "next">Next Question</button>
+
+{{else}}
+<form id="answer">
+<input type ="text" id='sAns'>
+<input type = "submit" Value = "Answer">
+</form>
+
+{{/if}}
+<h1>{{num}}</h1>
+</div>
+<br>
+<!--<button id = "sRoll">Roll</button>-->
+</template>

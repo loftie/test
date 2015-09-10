@@ -1,0 +1,17 @@
+<template name="layout">
+ <div class="container">
+ <div class="top">
+ <header class="navbar navbar-default" role="navigation">
+ <div class="navbar-header">
+ <a class="navbar-brand" href="{{pathFor 'qTypeList'}}"><u><b>Home</b></u></a>
+ </div>
+ </header>
+ </div>
+ <div id="breaker"></div>
+  <div id="main" class="row-fluid">
+  {{> yield}}
+ </div>
+ </div>
+</template>
+
+

@@ -1,0 +1,94 @@
+Session.setDefault('a1',0);
+Session.setDefault('a2',0);
+Session.setDefault('a3',0);
+Session.setDefault('s1',0);
+Session.setDefault("counter", " ");
+
+Session.set('a1', Math.floor(Math.random()*11)+2);
+//This next line will ensure a2 is less that a1 and >=1
+Session.set('a2', Math.floor(Math.random()*(Session.get('a1')-1)+1));
+
+//if (selection == 'Addition')
+//{
+	//a1= Math.floor(Math.random()*20);
+	//a2 = Math.floor(Math.random()*20);
+Session.set('a3', Session.get('a1') + Session.get('a2'));
+
+//}
+/*else if (selection = 'Subtraction')
+	{
+	//a1= Math.floor(Math.random()*20);
+	//a2 = Math.floor(Math.random()*20);
+	a3 = a1 + a2;
+	s1 ="-";
+};*/
+
+Session.set("R1", 1);
+
+Template.Addition.events({
+	/*'submit form.Submit': function(event){
+		event.preventDefault();
+	var ans = event.target.ans.value;
+		if (ans == a3){
+			console.log("correct")
+		};
+	}*/
+	
+//When clicking element with id Submit (i.e. the button Check!)
+'click #Submit':function()
+	{
+// grabs the value of the element ans(i.e. the text box)
+		
+		
+		var i=document.getElementById("ans").value
+		if (i==Session.get('a3'))
+			{
+			Session.set("counter", "Correct!");
+			Session.set("check", true);
+			//console.log("correct!")
+			}
+		else
+			{
+			Session.set("check", true);
+			Session.set("counter", "Incorrect! The answer is "+Session.get('a3')+".");
+			console.log("wrong!")
+			}
+	},
+
+'click #roll':function()
+	{
+		Session.set('a1', Math.floor(Math.random()*11)+2);
+		Session.set('R1', Math.floor(Math.random()*11)+2);
+		Session.set('a2', Math.floor(Math.random()*(Session.get('a1')-1)+1));
+		Session.set('a3', Session.get('a1') + Session.get('a2'));
+		//console.log(Session.get('a1'));
+		//console.log(Session.get('a2'));
+		//console.log(Session.get('a3'));
+	console.log(Session.get('R1'));
+	}
+	});
+	console.log(Session.get('R1'));
+	var qVarData = [
+	{sel: Session.get('a1')},
+	{sel:"+"},
+	{sel:Session.get('a2')},
+	{sel:'='},
+	//For Testing
+	//{sel: '?'+a3}
+	{sel: '?'}
+	];
+	Template.Addition.helpers(
+{
+	roller: function(){
+		return Session.get('R1');
+	},
+	check: function(){
+	return Session.get("check")
+	},
+	counter: function(){
+	return Session.get("counter")
+	},
+	qVar: qVarData
+}
+);
+

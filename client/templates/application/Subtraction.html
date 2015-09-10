@@ -1,0 +1,31 @@
+<template name ="Subtraction">
+	<br>
+	<h2 class="qTitle"><u>Subtraction</u></h2>
+	<h2 class="counter">{{result}}</h2>
+	
+	<div class='question'>
+	<table style="border:1px">
+		<td class = box>{{S1}}</td><td class = box>-</td><td class = box>{{S2}}</td><td class = box>=</td><td class = box>?</td><td class = box>{{S3}}</td>
+	</table>
+	
+	<br>
+	<div>
+	
+	{{#if check}}
+	<h1>{{correct}}</h1>
+	<button id = "next">Next Question</button>
+	
+	{{else}}
+	<form id='answer'>
+	<input type ="text" id="ans">
+	<input type="submit" value="Answer!">
+	</form>
+	
+	{{/if}}
+	</div>
+	<h1>{{num}}</h1>
+	</div>
+	
+	<!--<button id = "roll">Roll</button>-->
+	<br>
+ </template>

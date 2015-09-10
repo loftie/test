@@ -1,0 +1,21 @@
+<template name="tTables">
+<br>
+<form id ="answer">
+<input type = 'text' id="tChoice">
+<input type = "submit" value="Choose Times Table">
+</form>
+
+<!--If true, asks the user to input a number, if false displays the times table for the entry-->
+{{#if nSelect}}
+<h2>Please choose a whole number between 1 and 12</h2>
+{{else}}
+<br>
+<table style="border:1px">
+		{{#each tSelected}}
+			
+			<tr><td class=box>{{tNumber}}</td><td class=box>x</td><td class=box>{{tMult}}</td><td class=box>=</td><td class=box>{{tA}}</td></tr>
+			
+		{{/each}}
+	</table>
+{{/if}}
+</template>

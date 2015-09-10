@@ -1,0 +1,93 @@
+Session.set('q',Math.floor(Math.random()*3+1));
+
+Tracker.autorun(function(){
+if(Session.get('q')==1)
+	{
+		console.log("1")
+		var b = Math.floor(Math.random()*5+4);
+		var c = Math.floor(Math.random()*6+5);
+		var a = (b*c)/2;
+		var d = ("triangle");
+	}
+else if(Session.get('q')==2)
+	{
+		console.log("2")
+		var b = Math.floor(Math.random()*5+4);
+		var c = Math.floor(Math.random()*6+5);
+		var a = (b*c);
+		var d = ("square");
+	}
+else if(Session.get('q')==3)
+	{
+		console.log("3")
+		var b = Math.floor(Math.random()*5+4);
+		var c = Math.PI*(b^2);
+		var a = c.toFixed(2);
+		var d = ("circle");
+	};	
+});
+
+Template.shapes.helpers
+({
+	shape:function()
+		{
+			if(Session.get('q')==3)
+				{
+					return d+" with radius "+b;
+				}
+			else
+				{	
+					return d+" with width "+b+" and height "+c;
+				}
+		},
+		
+		
+	check: function()	
+		{
+			return Session.get("check");
+		},
+	correct: function()
+		{
+			return Session.get("correct");
+		},
+})
+//console.log(a);
+
+Template.shapes.events
+({
+'click #sRoll':function()
+{
+	console.log('click');
+	//Sets q to 0, otherwise if we have started with q=3, and rolled another q=3, the question would remain the same.  
+	Session.set('q',0);
+	Session.set('q',Math.floor(Math.random()*3+1));
+	console.log(Session.get('q'));
+	console.log(b);
+	
+},	
+'click #sSubmit':function()
+{
+	var i=document.getElementById("sAns").value
+	if(i==a)
+	{
+		var correct = "Correct!";
+		var check = true;
+	}
+	
+	/*if (i==Session.get('a3'))
+				{
+					Session.set("correct", "Correct!");
+					Session.set("check", true);
+					Session.set("cCount", Session.get("cCount")+1);
+										//console.log("correct!")
+				}
+			else
+				{
+					Session.set("check", true);
+					Session.set("correct", "Incorrect! The answer is "+Session.get('a3')+".");
+					console.log("wrong!")
+				}	*/
+	
+}
+	
+})

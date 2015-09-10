@@ -1,0 +1,177 @@
+Session.set('a1', Math.floor(Math.random()*11)+2);
+//This next line will ensure a2 is less that a1 and >=1
+Session.set('a2', Math.floor(Math.random()*(Session.get('a1')-1)+1));
+Session.setDefault("tCount", 0);
+Session.setDefault("cCount", 0);
+
+if (Session.get('selection') == 'Addition')
+	{
+		Session.set('a3', Session.get('a1')+Session.get('a2'));
+		Session.set('a4',"+");
+	}
+else if (Session.get('selection') == 'Subtraction')
+	{
+		Session.set('a3', Session.get('a1')-Session.get('a2'));
+		Session.set('a4',"-");
+	}
+else if (Session.get('selection')== 'Multiplication')
+	{
+		Session.set('a3', Session.get('a1')*Session.get('a2'));
+		Session.set('a4', "x");
+	}
+else if (Session.get('selection')== 'Division')
+	{
+		//Best way to do a division is work backwards from a multiplication
+		Session.set('d1', Math.floor(Math.random()*11)+2);
+		Session.set('d2', Math.floor(Math.random()*(Session.get('d1')-1)+1));
+		Session.set('d3', Session.get('d1')*Session.get('d2'));
+		Session.set('a3', Session.get('d2'));
+		Session.set('a4', "/");
+	}
+	
+	
+Template.Addition.helpers(
+{
+	A1: function()
+		{
+			if(Session.get('selection')== 'Division')
+			{
+				return Session.get('d3');
+			}
+			else
+			{
+			return Session.get('a1');
+			}
+		},
+	A2: function()
+		{
+			if(Session.get('selection')== 'Division')
+			{
+				return Session.get('d1');
+			}
+			else
+			{
+				return Session.get('a2');
+			}
+		},
+
+	A4: function()
+		{
+			return Session.get('a4');
+		},
+	check: function()	
+		{
+			return Session.get('check');
+		},
+	correct: function()
+		{
+			return Session.get('correct');
+		},
+	test: function()
+	{
+		if(Session.get('tCount')>0)
+		{
+			return Session.get('cCount')+"/"+Session.get('tCount');
+			
+		}			
+	}
+});
+
+
+Template.Addition.events({
+//When clicking element with id Submit (i.e. the button Check!)
+'click #Submit':function()
+	{
+// grabs the value of the element ans(i.e. the text box)
+			var i=document.getElementById("ans").value
+			Session.set("tCount", Session.get("tCount")+1);
+			if (i==Session.get('a3'))
+				{
+					Session.set("correct", "Correct!");
+					Session.set("check", true);
+					Session.set("cCount", Session.get("cCount")+1);
+										//console.log("correct!")
+				}
+			else
+				{
+					Session.set("check", true);
+					Session.set("correct", "Incorrect! The answer is "+Session.get('a3')+".");
+					console.log("wrong!")
+				}	
+	},
+
+//Roll not needed, just playing about
+'click #roll':function()
+	{
+				
+		Session.set('a1', Math.floor(Math.random()*11)+2);
+		Session.set('a2', Math.floor(Math.random()*(Session.get('a1')-1)+1));
+		if (Session.get('selection') == 'Addition')
+			{
+				Session.set('a3', Session.get('a1')+Session.get('a2'));
+				Session.set('a4',"+");
+				console.log("Add")
+			}
+			
+		else if (Session.get('selection') == 'Subtraction')
+			{
+				Session.set('a3', Session.get('a1')-Session.get('a2'));
+				Session.set('a4',"-");
+				console.log("Sub")
+			}
+		
+		else if (Session.get('selection')== 'Multiplication')
+			{
+				Session.set('a3', Session.get('a1')*Session.get('a2'));
+				Session.set('a4', "x");
+				console.log("Mul")
+			}
+		
+		else if (Session.get('selection')== 'Division')
+			{
+				Session.set('d1', Math.floor(Math.random()*11)+2);
+				Session.set('d2', Math.floor(Math.random()*(Session.get('d1')-1)+1));
+				Session.set('d3', Session.get('d1')*Session.get('d2'));
+				Session.set('a3', Session.get('d2'));
+				Session.set('a4', "/");
+			}
+	},
+
+'submit #nextForm':function(event)
+	{
+		event.preventDefault();
+		Session.set("check", false);
+		Session.set('a1', Math.floor(Math.random()*11)+2);
+		Session.set('a2', Math.floor(Math.random()*(Session.get('a1')-1)+1));
+		if (Session.get('selection') == 'Addition')
+			{
+				Session.set('a3', Session.get('a1')+Session.get('a2'));
+				Session.set('a4',"+");
+				console.log("Add")
+			}
+			
+		else if (Session.get('selection') == 'Subtraction')
+			{
+				Session.set('a3', Session.get('a1')-Session.get('a2'));
+				Session.set('a4',"-");
+				console.log("Sub")
+			}
+		
+		else if (Session.get('selection')== 'Multiplication')
+			{
+				Session.set('a3', Session.get('a1')*Session.get('a2'));
+				Session.set('a4', "x");
+				console.log("Mul")
+			}
+		
+		else if (Session.get('selection')== 'Division')
+			{
+				Session.set('d1', Math.floor(Math.random()*11)+2);
+				Session.set('d2', Math.floor(Math.random()*(Session.get('d1')-1)+1));
+				Session.set('d3', Session.get('d1')*Session.get('d2'));
+				Session.set('a3', Session.get('d2'));
+				Session.set('a4', "/");
+			}
+	}
+		
+})

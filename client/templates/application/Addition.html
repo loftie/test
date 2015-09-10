@@ -1,0 +1,41 @@
+<template name ="Addition">
+	<br>
+	<h2 class="qTitle"><u>Addition</u></h2>
+	
+	<!--Displays the result, questions answered correctly/questions answered-->
+	<h2 class="counter">{{result}}</h2>
+	
+	<!--Creates a table with cells that contain the variables for the question-->
+	<div class='question'>
+	<table style="border:1px">
+		<td class = box>{{A1}}</td><td class = box>+</td><td class = box>{{A2}}</td><td class = box>=</td><td class = box>?</td>
+		<!--Displays answer for testing-->
+		<td class = box>{{A3}}</td>
+	
+	</table>
+	
+	<br>
+	<div>
+	
+	<!--If the question has been checked, check=true, then display if it was correct or not and the next question button-->
+	{{#if check}}
+	<h1>{{correct}}</h1>
+	<button id="next">Next Question</button>
+	
+	<!--Otherwise, display a textbox and submit button-->
+	{{else}}
+	<form id='answer'>
+	<input type ="text" id="ans">
+	<input type ="submit" Value = "Answer">
+	</form>
+	
+	{{/if}}
+	</div>
+	
+	<!--Displays the text from numCheck, if the answer isn't a number or is blank, displays please enter... otherwise blank-->
+	<h1>{{num}}</h1>
+	</div>
+	
+	<!--<button id = "roll">Roll</button>-->
+	<br>
+</template>

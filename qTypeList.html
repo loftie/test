@@ -1,0 +1,26 @@
+<template name ="qTypeList">
+
+ <h2 class="qTitle"><u>Welcome to Tester</u></h2>
+ <br><p>Please choose a topic.</p>
+
+	<div class="question">
+	
+	<p></p>
+	<!-- creates a table with cells to be used as 'buttons', linking the templates -->
+	<table style="border:1px">
+		<!--{{#each qType}}
+			<td class=tabTable>{{> testing}}</td>
+			
+		{{/each}}-->
+		
+		<!-- -->
+		<td class=tabTable><a href="{{pathFor 'addition'}}" class= tabLink><h3 class= tab>Addition</h3></a></td>
+		<td class=tabTable><a href="{{pathFor 'subtraction'}}" class= tabLink><h3 class= tab>Subtraction</h3></a></td>
+		<td class=tabTable><a href="{{pathFor 'multiplication'}}" class= tabLink><h3 class= tab>Multiplication</h3></a></td>
+		<td class=tabTable><a href="{{pathFor 'division'}}" class= tabLink><h3 class= tab>Division</h3></a></td>
+		<td class=tabTable><a href="{{pathFor 'shapes'}}" class= tabLink><h3 class= tab>Shapes</h3></a></td>
+		<td class=tabTable><a href="{{pathFor 'tTables'}}" class= tabLink><h3 class= tab>Times Tables</h3></a></td>
+	</table>
+	</div>
+	
+ </template>

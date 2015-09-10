@@ -1,0 +1,33 @@
+<template name ="Addition">
+<br>
+<p id="counter"><h1>{{test}}</h1></p>
+<br>
+	<table style="border:1px" id="question">
+	<td class = box>{{A1}}</td><td class = box>{{A4}}</td><td class = box>{{A2}}</td><td class = box>=</td><td class = box>?</td>
+		<!--{{#each qVar}}
+			<td class = box>{{sel}}</td>
+		{{/each}}-->
+	</table>
+	<br>
+	<!-- <form class= Submit>-->
+	
+	<!--</form>-->
+	<div>
+	{{#if check}}
+	<h1>{{correct}}</h1>
+	<form id="nextForm"><input type="submit" name="nextQ" value="Next Question"></form>
+	
+	<!--<button id = next">Next Question</button>-->
+	{{else}}
+	<div id="ansBox"><input type ="text" id="ans">
+	<button id = "Submit">Check!</button>
+	</div>
+	{{/if}}
+	<button id = "roll">Roll</button>
+	<br>
+	<!--{{#each qVar}}
+			{{sel}}
+		{{/each}}-->
+		<p>{{roller}}</p>
+	</div>
+ </template>
